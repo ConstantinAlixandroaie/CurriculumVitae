@@ -3,6 +3,7 @@ using System.Security.Claims;
 
 namespace CurricullumVitae.Data.Access
 {
+    //to add crud code to all repositories.
     public interface IDocumentRepository : IRepository<Document>
     {
 
