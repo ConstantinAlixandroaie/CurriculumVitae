@@ -3,34 +3,33 @@ using System.Security.Claims;
 
 namespace CurricullumVitae.Data.Access
 {
-    public interface IDocumentRepository : IRepository<Document>
+    public interface IEducationRepository:IRepository<Education>
     {
 
     }
-   
-    public class DocumentRepository:Repository<Document>,IDocumentRepository
+    public class EducationRepository:Repository<Education>, IEducationRepository    
     {
-        public DocumentRepository(ApplicationDbContext ctx):base(ctx)
+        public EducationRepository(ApplicationDbContext ctx):base(ctx)
         {
 
         }
 
-        public override Task<Document> Add(Document item, ClaimsPrincipal user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Task<IEnumerable<Document>> Get(bool asNoTracking = false)
+        public override Task<Education> Add(Education item, ClaimsPrincipal user)
         {
             throw new NotImplementedException();
         }
 
-        public override Task<Document> GetById(int id, bool asNoTracking = false)
+        public override Task<IEnumerable<Education>> Get(bool asNoTracking = false)
         {
             throw new NotImplementedException();
         }
 
-        public override Task<bool> Remove(Document item, ClaimsPrincipal user)
+        public override Task<Education> GetById(int id, bool asNoTracking = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Task<bool> Remove(Education item, ClaimsPrincipal user)
         {
             throw new NotImplementedException();
         }
@@ -40,7 +39,7 @@ namespace CurricullumVitae.Data.Access
             throw new NotImplementedException();
         }
 
-        public override Task<bool> Update(int id, Document newData, ClaimsPrincipal user)
+        public override Task<bool> Update(int id, Education newData, ClaimsPrincipal user)
         {
             throw new NotImplementedException();
         }
