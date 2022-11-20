@@ -3,7 +3,7 @@
     public class ProfilePicture : IDbObject
     {
         public int Id { get; set; }
-        public int ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         public Document Document { get; set; }
         public int DocumentId { get; set; }

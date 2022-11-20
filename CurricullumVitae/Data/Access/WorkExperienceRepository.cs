@@ -1,4 +1,6 @@
-﻿using CurricullumVitae.Models;
+﻿using AspNetCore;
+using CurricullumVitae.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace CurricullumVitae.Data.Access
@@ -9,39 +11,166 @@ namespace CurricullumVitae.Data.Access
     }
     public class WorkExperienceRepository:Repository<WorkExperience>,IWorkExperienceRepository
     {
-        public WorkExperienceRepository(ApplicationDbContext ctx) : base(ctx)
+        public WorkExperienceRepository(ApplicationDbContext ctx,ILogger<WorkExperienceRepository> logger) : base(ctx,logger)
         {
 
         }
 
-        public override Task<WorkExperience> Add(WorkExperience item, ClaimsPrincipal user)
+        public override async Task<WorkExperience> Add(WorkExperience item, ClaimsPrincipal user)
         {
-            throw new NotImplementedException();
+            if (item==null)
+            {
+                return null;
+            }
+            if (item.Title==null)
+            {
+                return null;
+            }
+            try
+            {
+                var workExperience = new WorkExperience
+                {
+                    Title = item.Title,
+                    Description = item.Description,
+                    DocumentId = item.DocumentId,
+                    Document = await _ctx.Documents.FirstOrDefaultAsync(x => x.Id == item.DocumentId),
+                    EndDate = item.EndDate,
+                    StartDate = item.StartDate,
+                };
+
+                _ctx.WorkExperiences.Add(workExperience);
+                await _ctx.SaveChangesAsync();
+                return workExperience;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, "An error occurred adding the work experience in the database.");
+                throw;
+            }
+
         }
 
-        public override Task<IEnumerable<WorkExperience>> Get(bool asNoTracking = false)
+        public override async Task<IEnumerable<WorkExperience>> Get(bool asNoTracking = false)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var rv = new List<WorkExperience>();
+                var sourceCollection = await _ctx.WorkExperiences.ToListAsync();
+                foreach (var source in sourceCollection) 
+                {
+                    var vm = new WorkExperience()
+                    {
+                        Title = source.Title,
+                        Description = source.Description,
+                        DocumentId = source.DocumentId,
+                        StartDate= source.StartDate,
+                        EndDate= source.EndDate,
+                        Document=source.Document,
+                    };
+                    rv.Add(vm);
+                }
+                return rv;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
         }
 
-        public override Task<WorkExperience> GetById(int id, bool asNoTracking = false)
+        public override async Task<WorkExperience> GetById(int id, bool asNoTracking = false)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var sourceCollection=_ctx.WorkExperiences.AsQueryable();
+                if(asNoTracking)
+                {
+                    sourceCollection = sourceCollection.AsNoTracking();
+                }
+                var workExperience= await sourceCollection.FirstOrDefaultAsync(x=> x.Id==id);
+                if (workExperience==null)
+                {
+                    return null;
+                }
+                var rv = new WorkExperience()
+                { 
+                    Id=workExperience.Id,
+                    Title=workExperience.Title,
+                    Description=workExperience.Description,
+                    DocumentId=workExperience.DocumentId,
+                    StartDate=workExperience.StartDate,
+                    EndDate=workExperience.EndDate,
+                    Document=workExperience.Document,
+                };
+                return rv;
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
         }
 
         public override Task<bool> Remove(WorkExperience item, ClaimsPrincipal user)
         {
+            //not likely to be necessary
             throw new NotImplementedException();
         }
 
-        public override Task RemoveById(int id, ClaimsPrincipal user)
+        public override async Task RemoveById(int id, ClaimsPrincipal user)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var workExperience = await _ctx.WorkExperiences.FirstOrDefaultAsync(x => x.Id == id);
+                if (workExperience==null) 
+                {
+                    throw new ArgumentNullException(nameof(workExperience), $"The WorkExperience with Id= '{id}' does not exist.");
+                }
+                //authorization 
+                _ctx.WorkExperiences.Remove(workExperience); 
+                await _ctx.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
         }
 
-        public override Task<bool> Update(int id, WorkExperience newData, ClaimsPrincipal user)
+        public override async Task<bool> Update(int id, WorkExperience newData, ClaimsPrincipal user)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var workExperience = await _ctx.WorkExperiences.FirstOrDefaultAsync(x=>x.Id== id);
+                if (workExperience == null)
+                    return false;
+                //atuhorization
+                if (!string.IsNullOrEmpty(newData.Description))
+                {
+                    workExperience.Description = newData.Description;
+                }
+                if (!string.IsNullOrEmpty(newData.Title))
+                {
+                    workExperience.Title = newData.Title;
+                }
+                if (newData.StartDate!=workExperience.StartDate)
+                {
+                    workExperience.StartDate = newData.StartDate;
+                }
+                if (newData.EndDate != workExperience.EndDate)
+                {
+                    workExperience.StartDate = newData.StartDate;
+                }
+                await _ctx.SaveChangesAsync();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
         }
     }
 }

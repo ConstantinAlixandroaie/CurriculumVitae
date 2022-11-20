@@ -6,7 +6,8 @@ namespace CurricullumVitae.Data.Access
     public abstract class Repository<T> : IRepository<T> where T : class, IDbObject
     {
         protected ApplicationDbContext _ctx;
-        public Repository(ApplicationDbContext ctx)
+        protected readonly ILogger _logger;
+        public Repository(ApplicationDbContext ctx, ILogger<Repository<T>> logger)
         {
             _ctx = ctx;
 
