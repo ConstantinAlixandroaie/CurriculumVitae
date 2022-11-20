@@ -1,14 +1,35 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CurricullumVitae.Data.Access;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace CurricullumVitae.Controllers
 {
     public class DocumentController : Controller
     {
-        // GET: DocumentController
-        public ActionResult Index()
+        private readonly IDocumentRepository _documentRepo;
+        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly IProfilePictureRepository _profilePicRepo;
+        private readonly IEducationRepository _educationRepo;
+        private readonly IExtraRepository _extraRepo;
+        private readonly IWorkExperienceRepository _workExperienceRepo;
+
+        public DocumentController(IDocumentRepository documentRepo, IHttpContextAccessor contextAccessor, IProfilePictureRepository profilePicRepo, IEducationRepository educationRepo, IExtraRepository extraRepo, IWorkExperienceRepository workExperienceRepo)
         {
-            return View();
+            _documentRepo = documentRepo;
+            _contextAccessor = contextAccessor;
+            _profilePicRepo = profilePicRepo;
+            _educationRepo = educationRepo;
+            _extraRepo = extraRepo;
+            _workExperienceRepo = workExperienceRepo;
+        }
+
+
+        // GET: DocumentController
+        public async Task<ActionResult> Index()
+        {
+            var rv = await _documentRepo.Get();
+            return View(rv);
         }
 
         // GET: DocumentController/Details/5
