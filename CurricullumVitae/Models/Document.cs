@@ -1,8 +1,11 @@
-﻿namespace CurricullumVitae.Models
+﻿using Microsoft.Build.Framework;
+
+namespace CurricullumVitae.Models
 {
     public class Document : IDbObject
     {
         public int Id { get; set; }
+        [Required]
         public string Description { get; set; }
 
         public List<Education> Education { get; set; }

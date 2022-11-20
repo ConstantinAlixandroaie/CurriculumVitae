@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Reflection.Metadata;
 
 namespace CurricullumVitae.Controllers
 {
@@ -33,9 +34,10 @@ namespace CurricullumVitae.Controllers
         }
 
         // GET: DocumentController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var rv = await _documentRepo.GetById(id);
+            return View(rv);
         }
 
         // GET: DocumentController/Create
@@ -47,10 +49,15 @@ namespace CurricullumVitae.Controllers
         // POST: DocumentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Models.Document document)
         {
             try
             {
+                if (ModelState.IsValid)
+                {
+                    await _documentRepo.Add(document, User);
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             catch
