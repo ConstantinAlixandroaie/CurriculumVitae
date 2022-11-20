@@ -1,5 +1,4 @@
-﻿using AspNetCore;
-using CurricullumVitae.Models;
+﻿using CurricullumVitae.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
@@ -125,7 +124,7 @@ namespace CurricullumVitae.Data.Access
                 var workExperience = await _ctx.WorkExperiences.FirstOrDefaultAsync(x => x.Id == id);
                 if (workExperience==null) 
                 {
-                    throw new ArgumentNullException(nameof(workExperience), $"The WorkExperience with Id= '{id}' does not exist.");
+                    throw new ArgumentNullException(nameof(workExperience));
                 }
                 //authorization 
                 _ctx.WorkExperiences.Remove(workExperience); 
