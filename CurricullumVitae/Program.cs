@@ -1,4 +1,5 @@
 using CurricullumVitae.Data;
+using CurricullumVitae.Data.Access;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,12 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+//My injected services
+builder.Services.AddTransient<IDocumentRepository, DocumentRepository>();
+builder.Services.AddTransient<IEducationRepository, EducationRepository>();
+builder.Services.AddTransient<IExtraRepository, ExtraRepository>();
+builder.Services.AddTransient<IProfilePictureRepository, ProfilePictureRepository>();
+builder.Services.AddTransient<IWorkExperienceRepository, WorkExperienceRepository>();
 
 var app = builder.Build();
 
