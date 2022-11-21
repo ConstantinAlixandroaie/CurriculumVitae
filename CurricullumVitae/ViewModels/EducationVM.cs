@@ -1,6 +1,6 @@
 ﻿namespace CurricullumVitae.Models
 {
-    public class Education : IUIObject
+    public class EducationVM : IUIObject
     {
         public int Id { get;set; }
         public string Title { get; set; }
@@ -14,7 +14,7 @@
 
         public IUIObject MakeNew()
         {
-            return new Education { Id = Id, Title = Title, University = University, Description = Description, StartDate = StartDate, EndDate = EndDate };
+            return new EducationVM { Id = Id, Title = Title, University = University, Description = Description, StartDate = StartDate, EndDate = EndDate };
         }
 
         public void UpdateFrom(IUIObject obj)

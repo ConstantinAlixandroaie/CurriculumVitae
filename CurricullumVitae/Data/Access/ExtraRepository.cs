@@ -4,18 +4,18 @@ using System.Security.Claims;
 
 namespace CurricullumVitae.Data.Access
 {
-    public interface IExtraRepository : IRepository<Extra>
+    public interface IExtraRepository : IRepository<ExtraVM>
     {
 
     }
-    public class ExtraRepository : Repository<Extra>, IExtraRepository
+    public class ExtraRepository : Repository<ExtraVM>, IExtraRepository
     {
         public ExtraRepository(ApplicationDbContext ctx, ILogger<ExtraRepository> logger) : base(ctx, logger)
         {
 
         }
 
-        public override async Task<Extra> Add(Extra item, ClaimsPrincipal user)
+        public override async Task<ExtraVM> Add(ExtraVM item, ClaimsPrincipal user)
         {
             if (item == null)
                 return null;
@@ -25,7 +25,7 @@ namespace CurricullumVitae.Data.Access
                 return null;
             try
             {
-                var extra = new Extra
+                var extra = new ExtraVM
                 {
                     Title = item.Title,
                     Document = item.Document,
@@ -44,15 +44,15 @@ namespace CurricullumVitae.Data.Access
             }
         }
 
-        public override async Task<IEnumerable<Extra>> Get(bool asNoTracking = false)
+        public override async Task<IEnumerable<ExtraVM>> Get(bool asNoTracking = false)
         {
             try
             {
-                var rv = new List<Extra>();
+                var rv = new List<ExtraVM>();
                 var sourceCollection = await _ctx.Extras.ToListAsync();
                 foreach (var source in sourceCollection)
                 {
-                    var vm = new Extra
+                    var vm = new ExtraVM
                     {
                         Title = source.Title,
                         Document = source.Document,
@@ -71,7 +71,7 @@ namespace CurricullumVitae.Data.Access
             }
         }
 
-        public override async Task<Extra> GetById(int id, bool asNoTracking = false)
+        public override async Task<ExtraVM> GetById(int id, bool asNoTracking = false)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace CurricullumVitae.Data.Access
                     return null;
                     throw new ArgumentNullException(nameof(extra));
                 }
-                var rv = new Extra()
+                var rv = new ExtraVM()
                 {
                     Title = extra.Title,
                     Document = extra.Document,
@@ -103,7 +103,7 @@ namespace CurricullumVitae.Data.Access
             }
         }
 
-        public override Task<bool> Remove(Extra item, ClaimsPrincipal user)
+        public override Task<bool> Remove(ExtraVM item, ClaimsPrincipal user)
         {
             throw new NotImplementedException();
         }
@@ -126,7 +126,7 @@ namespace CurricullumVitae.Data.Access
             }
         }
 
-        public override async Task<bool> Update(int id, Extra newData, ClaimsPrincipal user)
+        public override async Task<bool> Update(int id, ExtraVM newData, ClaimsPrincipal user)
         {
             try
             {

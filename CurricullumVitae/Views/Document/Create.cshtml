@@ -9,19 +9,11 @@
 <h4>Document</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="View">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" asp-controller="Document" asp-action="Create" />
-            </div>
-            <partial name="_WorkExperience" />
-        </form>
+    <div class="col-md-12">
+       
+        <partial name="_WorkExperience" />
+        <partial name="_Education"/>
+        <partial name="_Extra"/>
     </div>
 </div>
 
@@ -30,5 +22,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

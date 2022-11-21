@@ -2,7 +2,7 @@
 
 namespace CurricullumVitae.Models
 {
-    public class Document : IUIObject
+    public class DocumentVM : IUIObject
     {
         public int Id { get; set; }
         [Required]

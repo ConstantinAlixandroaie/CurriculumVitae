@@ -4,18 +4,18 @@ using System.Security.Claims;
 
 namespace CurricullumVitae.Data.Access
 {
-    public interface IEducationRepository : IRepository<Education>
+    public interface IEducationRepository : IRepository<EducationVM>
     {
 
     }
-    public class EducationRepository : Repository<Education>, IEducationRepository
+    public class EducationRepository : Repository<EducationVM>, IEducationRepository
     {
         public EducationRepository(ApplicationDbContext ctx, ILogger<EducationRepository> logger) : base(ctx, logger)
         {
 
         }
 
-        public override async Task<Education> Add(Education item, ClaimsPrincipal user)
+        public override async Task<EducationVM> Add(EducationVM item, ClaimsPrincipal user)
         {
             if (item == null)
                 return null;
@@ -23,7 +23,7 @@ namespace CurricullumVitae.Data.Access
                 return null;
             try
             {
-                var education = new Education
+                var education = new EducationVM
                 {
                     Title = item.Title,
                     Description = item.Description,
@@ -44,15 +44,15 @@ namespace CurricullumVitae.Data.Access
             }
         }
 
-        public override async Task<IEnumerable<Education>> Get(bool asNoTracking = false)
+        public override async Task<IEnumerable<EducationVM>> Get(bool asNoTracking = false)
         {
             try
             {
-                var rv = new List<Education>();
+                var rv = new List<EducationVM>();
                 var sourceCollection = await _ctx.Educations.ToListAsync();
                 foreach (var source in sourceCollection)
                 {
-                    var vm = new Education()
+                    var vm = new EducationVM()
                     {
                         Title = source.Title,
                         Description = source.Description,
@@ -73,7 +73,7 @@ namespace CurricullumVitae.Data.Access
             }
         }
 
-        public override async Task<Education> GetById(int id, bool asNoTracking = false)
+        public override async Task<EducationVM> GetById(int id, bool asNoTracking = false)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace CurricullumVitae.Data.Access
                 {
                     return null;
                 }
-                var rv = new Education()
+                var rv = new EducationVM()
                 {
                     Title = education.Title,
                     Description = education.Description,
@@ -106,7 +106,7 @@ namespace CurricullumVitae.Data.Access
             }
         }
 
-        public override Task<bool> Remove(Education item, ClaimsPrincipal user)
+        public override Task<bool> Remove(EducationVM item, ClaimsPrincipal user)
         {
             throw new NotImplementedException();
         }
@@ -132,7 +132,7 @@ namespace CurricullumVitae.Data.Access
 
         }
 
-        public override async Task<bool> Update(int id, Education newData, ClaimsPrincipal user)
+        public override async Task<bool> Update(int id, EducationVM newData, ClaimsPrincipal user)
         {
             try
             {
