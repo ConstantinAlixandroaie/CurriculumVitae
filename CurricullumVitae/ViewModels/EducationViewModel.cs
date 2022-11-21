@@ -1,6 +1,6 @@
 ﻿namespace CurricullumVitae.Models
 {
-    public class EducationVM : IUIObject
+    public class EducationViewModel : IUIObject
     {
         public int Id { get;set; }
         public string Title { get; set; }

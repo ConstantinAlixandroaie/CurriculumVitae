@@ -1,6 +1,6 @@
 ﻿namespace CurricullumVitae.Models
 {
-    public class WorkExperienceVM :IUIObject
+    public class WorkExperienceViewModel :IUIObject
     {
         public int Id { get; set; }
         public string Title { get; set; }    

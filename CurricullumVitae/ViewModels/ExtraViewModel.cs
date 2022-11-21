@@ -1,6 +1,6 @@
 ﻿namespace CurricullumVitae.Models
 {
-    public class ExtraVM : IUIObject
+    public class ExtraViewModel : IUIObject
     {
         
         public int Id { get; set; }

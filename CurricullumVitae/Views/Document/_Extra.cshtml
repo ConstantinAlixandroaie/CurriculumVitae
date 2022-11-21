@@ -1,4 +1,4 @@
-﻿@model CurricullumVitae.Models.ExtraVM
+﻿@model CurricullumVitae.Models.ExtraViewModel
 
 <h4>Extra</h4>
 <hr />
@@ -15,10 +15,6 @@
                 <label asp-for="Content" class="control-label"></label>
                 <input asp-for="Content" class="form-control" />
                 <span asp-validation-for="Content" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DocumentId" class="control-label"></label>
-                <select asp-for="DocumentId" class ="form-control" asp-items="ViewBag.DocumentId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

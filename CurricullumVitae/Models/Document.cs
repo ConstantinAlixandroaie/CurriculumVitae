@@ -8,8 +8,8 @@ namespace CurricullumVitae.Models
         [Required]
         public string Description { get; set; }
 
-        public List<EducationVM> Education { get; set; }
-        public List<ExtraVM> Extra { get; set; }
+        public List<Education> Education { get; set; }
+        public List<ExtraViewModel> Extra { get; set; }
         public ProfilePicture ProfilePicture { get; set; }
         public List<WorkExperience> WorkExperience { get; set; }
 

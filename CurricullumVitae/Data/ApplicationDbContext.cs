@@ -8,8 +8,8 @@ namespace CurricullumVitae.Data
     {
 
         public DbSet<Document> Documents { get; set; }
-        public DbSet<EducationVM> Educations { get; set; }
-        public DbSet<ExtraVM> Extras { get; set; }
+        public DbSet<Education> Educations { get; set; }
+        public DbSet<Extra> Extras { get; set; }
         public DbSet<ProfilePicture> ProfilePictures { get; set; }
         public DbSet<WorkExperience> WorkExperiences { get; set; }
 
