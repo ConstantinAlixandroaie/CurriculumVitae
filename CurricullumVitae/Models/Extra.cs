@@ -1,6 +1,6 @@
 ﻿namespace CurricullumVitae.Models
 {
-    public class Extra : IUIObject
+    public class Extra : IDbObject
     {
         
         public int Id { get; set; }
@@ -10,12 +10,12 @@
         public Document Document { get; set; }
         public int DocumentId { get; set; }
 
-        public IUIObject MakeNew()
+        public IDbObject MakeNew()
         {
             return new Extra { Id = Id, Title = Title, Content = Content };
         }
 
-       public void UpdateFrom(IUIObject obj)
+       public void UpdateFrom(IDbObject obj)
         {
             var q= obj as Extra;
             Title = q.Title;

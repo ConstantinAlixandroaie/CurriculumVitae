@@ -3,7 +3,7 @@ using System.Security.Claims;
 
 namespace CurricullumVitae.Data.Access
 {
-    public abstract class Repository<T> : IRepository<T> where T : class, IUIObject
+    public abstract class Repository<T> : IRepository<T> where T : class, IDbObject
     {
         protected ApplicationDbContext _ctx;
         protected readonly ILogger _logger;

@@ -2,7 +2,7 @@
 
 namespace CurricullumVitae.Models
 {
-    public class Document : IUIObject
+    public class Document : IDbObject
     {
         public int Id { get; set; }
         [Required]
@@ -11,16 +11,16 @@ namespace CurricullumVitae.Models
         public string AuhtorId { get; set; }
 
         public List<Education> Education { get; set; }
-        public List<ExtraViewModel> Extra { get; set; }
+        public List<Extra> Extra { get; set; }
         public ProfilePicture ProfilePicture { get; set; }
         public List<WorkExperience> WorkExperience { get; set; }
 
-        public IUIObject MakeNew()
+        public IDbObject MakeNew()
         {
             return new Document { Id = Id, Description = Description, Education = Education, Extra = Extra, ProfilePicture = ProfilePicture, WorkExperience = WorkExperience };
         }
 
-        public void UpdateFrom(IUIObject obj)
+        public void UpdateFrom(IDbObject obj)
         {
             var q=obj as Document;
             Description= q.Description;

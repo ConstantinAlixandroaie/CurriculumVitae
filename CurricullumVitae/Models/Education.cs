@@ -1,6 +1,6 @@
 ﻿namespace CurricullumVitae.Models
 {
-    public class Education : IUIObject
+    public class Education : IDbObject
     {
         public int Id { get;set; }
         public string Title { get; set; }
@@ -12,14 +12,19 @@
         public Document Document { get; set; }
         public int DocumentId { get; set; }
 
-        public IUIObject MakeNew()
+        public IDbObject MakeNew()
         {
             return new Education { Id = Id, Title = Title, University = University, Description = Description, StartDate = StartDate, EndDate = EndDate };
         }
 
-        public void UpdateFrom(IUIObject obj)
+        public void UpdateFrom(IDbObject obj)
         {
-            throw new NotImplementedException();
+          var q = obj as Education;
+            Title=q.Title;
+            University= q.University;
+            Description=q.Description;
+            StartDate=q.StartDate;
+            EndDate=q.EndDate;
         }
     }
 }

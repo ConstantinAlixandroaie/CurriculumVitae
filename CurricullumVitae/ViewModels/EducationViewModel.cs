@@ -1,4 +1,4 @@
-﻿namespace CurricullumVitae.Models
+﻿namespace CurricullumVitae.ViewModels
 {
     public class EducationViewModel : IUIObject
     {

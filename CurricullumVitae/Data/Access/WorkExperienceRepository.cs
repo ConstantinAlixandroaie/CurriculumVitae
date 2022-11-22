@@ -43,7 +43,7 @@ namespace CurricullumVitae.Data.Access
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message, "An error occurred adding the work experience in the database.");
+                _logger.LogError(ex.Message);
                 throw;
             }
 

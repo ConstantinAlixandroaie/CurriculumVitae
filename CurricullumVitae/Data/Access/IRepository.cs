@@ -3,7 +3,7 @@ using System.Security.Claims;
 
 namespace CurricullumVitae.Data.Access
 {
-    public interface IRepository<T> where T : IUIObject
+    public interface IRepository<T> where T : IDbObject
     {
         Task<IEnumerable<T>> Get(bool asNoTracking = false);
         Task<T> GetById(int id, bool asNoTracking = false);

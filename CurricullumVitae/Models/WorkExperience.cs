@@ -1,6 +1,6 @@
 ﻿namespace CurricullumVitae.Models
 {
-    public class WorkExperience :IUIObject
+    public class WorkExperience :IDbObject
     {
         public int Id { get; set; }
         public string Title { get; set; }    
@@ -11,12 +11,12 @@
         public Document Document { get; set; }
         public int DocumentId { get; set; }
 
-        public IUIObject MakeNew()
+        public IDbObject MakeNew()
         {
             return new WorkExperience { Id = Id, Title = Title, Description = Description, StartDate = StartDate, EndDate = EndDate, Document = Document, DocumentId = DocumentId };
         }
 
-        public void UpdateFrom(IUIObject obj)
+        public void UpdateFrom(IDbObject obj)
         {
             var q=obj as WorkExperience;
             Title= q.Title; 
