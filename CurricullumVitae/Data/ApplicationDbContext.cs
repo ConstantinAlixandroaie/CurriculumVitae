@@ -1,6 +1,7 @@
 ﻿using CurricullumVitae.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using CurricullumVitae.ViewModels;
 
 namespace CurricullumVitae.Data
 {
@@ -18,5 +19,8 @@ namespace CurricullumVitae.Data
             : base(options)
         {
         }
+
+
+        public DbSet<CurricullumVitae.ViewModels.DocumentViewModel> DocumentViewModel { get; set; }
     }
 }

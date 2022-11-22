@@ -13,7 +13,7 @@ namespace CurricullumVitae.Controllers
         private readonly IProfilePictureRepository _profilePicRepo;
         private readonly IEducationRepository _educationRepo;
         private readonly IExtraRepository _extraRepo;
-        private readonly IWorkExperienceRepository _workExperienceRepo;
+        private readonly IWorkExperienceRepository _workExperienceRepo; 
 
         public DocumentController(IDocumentRepository documentRepo, IHttpContextAccessor contextAccessor, IProfilePictureRepository profilePicRepo, IEducationRepository educationRepo, IExtraRepository extraRepo, IWorkExperienceRepository workExperienceRepo)
         {

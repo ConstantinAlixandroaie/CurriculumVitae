@@ -10,7 +10,7 @@ namespace CurricullumVitae.Data.Access
         public Repository(ApplicationDbContext ctx, ILogger<Repository<T>> logger)
         {
             _ctx = ctx;
-
+            _logger= logger;
         }
         public abstract Task<T> Add(T item, ClaimsPrincipal user);
         public abstract Task<IEnumerable<T>> Get(bool asNoTracking = false);
