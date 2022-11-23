@@ -3,6 +3,7 @@
 <h4>DocumentViewModel</h4>
 <hr />
 <div class="row">
+
     <div class="col-md-8">
         <form asp-action="_Document" id="documentForm" method="post" data-ajax="true" data-ajax-method="Post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -16,6 +17,7 @@
             </div>
         </form>
     </div>
+
 </div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

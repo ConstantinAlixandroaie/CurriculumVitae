@@ -1,9 +1,9 @@
-﻿@model CurricullumVitae.ViewModels.WorkExperienceViewModel
-
-<h4>WorkExperience</h4>
-<hr />
-<div class="row" id="workExp_parent">
-    <div id="workExp_1">
+﻿//Function to add a section of work experience item.
+const button = document.getElementById("addworkExp")
+const el = document.getElementById("workExp_parent")
+var sections = 1;
+function addWorkExp(sections) {
+    const html = `<div class="row" id="workExp_${sections}">
         <div class="col-md-12">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -30,17 +30,12 @@
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="form-group">
-        <button class="btn btn-sm btn-primary" value="Add +" type="submit" id="addworkExp" onclick="addWorkExp();"></button>
-    </div>
-</div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-    @*@{await Html.RenderPartialAsync("_MyCVScriptsPartial");}*@
+    </div>`
+    return html
 }
+
+button.addEventListener("click", () => {
+    sections += 1;
+    const div = addWorkExp(sections)
+    el.insertAdjacentHTML("beforeend",div)
+})    
