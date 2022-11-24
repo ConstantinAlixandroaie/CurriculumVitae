@@ -18,8 +18,5 @@ namespace CurricullumVitae.Data
             : base(options)
         {
         }
-
-
-        public DbSet<CurricullumVitae.ViewModels.DocumentViewModel> DocumentViewModel { get; set; }
     }
 }

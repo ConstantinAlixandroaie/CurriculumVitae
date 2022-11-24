@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurriculumVitae", "CurricullumVitae\CurriculumVitae.csproj", "{439C9A24-CA91-4A6E-AAE9-291BFCD03528}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurriculumVitaeAPI", "CurriculumVitaeAPI\CurriculumVitaeAPI.csproj", "{3CFD7474-2D7C-4C39-B8D3-FE10B62056FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{439C9A24-CA91-4A6E-AAE9-291BFCD03528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{439C9A24-CA91-4A6E-AAE9-291BFCD03528}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{439C9A24-CA91-4A6E-AAE9-291BFCD03528}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{439C9A24-CA91-4A6E-AAE9-291BFCD03528}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CFD7474-2D7C-4C39-B8D3-FE10B62056FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CFD7474-2D7C-4C39-B8D3-FE10B62056FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CFD7474-2D7C-4C39-B8D3-FE10B62056FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CFD7474-2D7C-4C39-B8D3-FE10B62056FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
