@@ -1,6 +1,4 @@
-﻿using Microsoft.Build.Framework;
-
-namespace CurricullumVitae.Models
+﻿namespace CurricullumVitae.Models
 {
     public class Document : IDbObject
     {
@@ -14,6 +12,8 @@ namespace CurricullumVitae.Models
         public List<Extra> Extra { get; set; }
         public ProfilePicture ProfilePicture { get; set; }
         public List<WorkExperience> WorkExperience { get; set; }
+
+
 
         public IDbObject MakeNew()
         {
