@@ -30,6 +30,7 @@ namespace CurricullumVitae.Data.Access
                 var workExperience = new WorkExperience
                 {
                     Title = item.Title,
+                    Employer= item.Employer,
                     Description = item.Description,
                     DocumentId = item.DocumentId,
                     Document = await _ctx.Documents.FirstOrDefaultAsync(x => x.Id == item.DocumentId),
@@ -60,6 +61,7 @@ namespace CurricullumVitae.Data.Access
                     var vm = new WorkExperience()
                     {
                         Title = source.Title,
+                        Employer= source.Employer,
                         Description = source.Description,
                         DocumentId = source.DocumentId,
                         StartDate= source.StartDate,
@@ -95,6 +97,7 @@ namespace CurricullumVitae.Data.Access
                 { 
                     Id=workExperience.Id,
                     Title=workExperience.Title,
+                    Employer=workExperience.
                     Description=workExperience.Description,
                     DocumentId=workExperience.DocumentId,
                     StartDate=workExperience.StartDate,
@@ -148,6 +151,10 @@ namespace CurricullumVitae.Data.Access
                 if (!string.IsNullOrEmpty(newData.Description))
                 {
                     workExperience.Description = newData.Description;
+                }
+                if (!string.IsNullOrEmpty(newData.Employer))
+                {
+                    workExperience.Employer = newData.Employer;
                 }
                 if (!string.IsNullOrEmpty(newData.Title))
                 {
