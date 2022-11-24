@@ -18,20 +18,5 @@ namespace CurricullumVitae.Data.Access
         public abstract Task<bool> Remove(T item, ClaimsPrincipal user);
         public abstract Task RemoveById(int id, ClaimsPrincipal user);
         public abstract Task<bool> Update(int id, T newData, ClaimsPrincipal user);
-
-        public Task<bool> Remove(T item, ClaimsPrincipal user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RemoveById(int id, ClaimsPrincipal user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> Update(int id, T newData, ClaimsPrincipal user)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

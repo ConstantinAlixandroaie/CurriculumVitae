@@ -1,9 +1,9 @@
-﻿namespace CurricullumVitae.Models
+﻿
+namespace CurricullumVitae.Models
 {
     public class Document : IDbObject
     {
         public int Id { get; set; }
-        [Required]
         public string Description { get; set; }
         public string Author { get; set; }
         public string AuhtorId { get; set; }

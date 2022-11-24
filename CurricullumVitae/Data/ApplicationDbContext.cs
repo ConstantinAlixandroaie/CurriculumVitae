@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using CurricullumVitae.ViewModels;
+using CurricullumVitae.Models;
 
 namespace CurricullumVitae.Data
 {
