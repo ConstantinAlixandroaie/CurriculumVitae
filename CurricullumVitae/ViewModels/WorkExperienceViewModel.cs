@@ -2,7 +2,7 @@
 
 namespace CurricullumVitae.ViewModels
 {
-    public class DocumentViewModel :IUIObject
+    public class WorkExperienceViewModel :IUIObject
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -13,5 +13,6 @@ namespace CurricullumVitae.ViewModels
         public DateTimeOffset StartDate { get; set; }
         [DataType(DataType.Date)]
         public DateTimeOffset EndDate { get; set; }
+
     }
 }
