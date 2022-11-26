@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurriculumVitaeAPI", "CurriculumVitaeAPI\CurriculumVitaeAPI.csproj", "{3CFD7474-2D7C-4C39-B8D3-FE10B62056FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurriculumVitaeAPI", "CurriculumVitaeAPI\CurriculumVitaeAPI.csproj", "{3CFD7474-2D7C-4C39-B8D3-FE10B62056FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
